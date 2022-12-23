@@ -74,12 +74,12 @@ const { chalk, inquirer, _, fs, instagram, print, delay } = require("./index.js"
                             const text = inputMessage.split("|");
                             const msg = text[Math.floor(Math.random() * text.length)];
                             const task = [ig.like(media.pk), ig.comment(media.pk, msg)];
-                            let [follow, like, comment] = await Promise.all(task);
+                            let [ like, comment] = await Promise.all(task);
  
 
                             like = like ? chalk.bold.green("Like") : chalk.bold.red("Like");
                             comment = comment ? chalk.bold.green("Comment") : chalk.bold.red("Comment");
-                            print(`▲ @${media.user.username} ⇶ [${follow}, ${like}, ${comment}] ⇶ ${chalk.cyanBright(msg)}`);
+                            print(`▲ @${media.user.username} ⇶ [${like}, ${comment}] ⇶ ${chalk.cyanBright(msg)}`);
                         } else print(chalk`▼ @${media.user.username} ⇶ {yellow Private or already liked/followed/follows you}`);
                     })
                 );
