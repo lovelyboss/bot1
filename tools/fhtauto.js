@@ -73,8 +73,8 @@ const { chalk, inquirer, _, fs, instagram, print, delay } = require("./index.js"
                         if (!media.has_liked && !media.user.is_private && !status.following && !status.followed_by) {
                             const text = inputMessage.split("|");
                             const msg = text[Math.floor(Math.random() * text.length)];
-                            const task = [ig.follow(media.user.pk), ig.like(media.pk), ig.comment(media.pk, msg)];
-                            let [follow, like, comment] = await Promise.all(task);
+                            const task = [ig.like(media.pk), ig.comment(media.pk, msg)];
+                            let [like, comment] = await Promise.all(task);
                             follow = follow ? chalk.bold.green(`Follow`) : chalk.bold.red("Follow");
                             like = like ? chalk.bold.green("Like") : chalk.bold.red("Like");
                             comment = comment ? chalk.bold.green("Comment") : chalk.bold.red("Comment");
