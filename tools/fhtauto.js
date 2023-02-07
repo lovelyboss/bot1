@@ -54,12 +54,7 @@ const { chalk, inquirer, _, fs, instagram, print, delay } = require("./index.js"
             message: "Input sleep time (in milliseconds):",
             validate: (val) => /[0-9]/.test(val) || "Only input numbers",
         },
-        {
-            type: "input",
-            name: "refreshRate",
-            message: "Input page refresh time",
-            validate: (val) => /[0-9]/.test(val) || "only input number",
-        }, 
+
     ];
 
     try {
