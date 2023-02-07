@@ -3,11 +3,13 @@ const { chalk, inquirer, _, fs, instagram, print, delay } = require("./index.js"
 (async () => {
     print(
         chalk`{bold.green
-  ▄▄▄▄▄            ▄▄▌  .▄▄ · ▪   ▄▄ • 
-  •██  ▪     ▪     ██•  ▐█ ▀. ██ ▐█ ▀ ▪
-   ▐█.▪ ▄█▀▄  ▄█▀▄ ██▪  ▄▀▀▀█▄▐█·▄█ ▀█▄
-   ▐█▌·▐█▌.▐▌▐█▌.▐▌▐█▌▐▌▐█▄▪▐█▐█▌▐█▄▪▐█
-   ▀▀▀  ▀█▄▀▪ ▀█▄▀▪.▀▀▀  ▀▀▀▀ ▀▀▀·▀▀▀▀ 
+          |
+    ______|______
+  /  ___________  \
+ |  |---|   |---|  |
+||        |        ||
+ |    \_______/    |
+  \_______________/
 
   Ξ TITLE  : Like Comment (Hastag Target)
   Ξ UPDATE : Wednesday, August 4, 2021 (GMT+8)
@@ -52,41 +54,52 @@ const { chalk, inquirer, _, fs, instagram, print, delay } = require("./index.js"
             message: "Input sleep time (in milliseconds):",
             validate: (val) => /[0-9]/.test(val) || "Only input numbers",
         },
+        {
+            type: "input",
+            name: "refreshRate",
+            message: "Input page refresh time",
+            validate: (val) => /[0-9]/.test(val) || "only input number",
+        }, 
     ];
 
     try {
-        const { username, password, hashtag, perExec, delayTime, inputMessage } = await inquirer.prompt(questions);
+        const { username, password, hashtag, perExec, delayTime, refreshRate, inputMessage } = await inquirer.prompt(questions);
         const ig = new instagram(username, password);
         print("Try to Login . . .", "wait", true);
         const login = await ig.login();
         print(`Logged in as @${login.username} (User ID: ${login.pk})`, "ok");
         print("Collecting users in tagged media . . .", "wait");
-        const tags = await ig.tagFeed(hashtag);
+        
         print(`Doing task with ratio ${perExec} target / ${delayTime} milliseconds \n`, "wait");
         do {
             let items = await tags.items();
             items = _.chunk(items, perExec);
             for (let i = 0; i < items.length; i++) {
-                await Promise.all(
+                
+
+                    await Promise.allconst ,tags = await ig.tagFeed(hashtag);
+
+                    
+
                     items[i].map(async (media) => {
                         const status = await ig.friendshipStatus(media.user.pk);
                         if (!media.has_liked && !media.user.is_private && !status.following && !status.followed_by) {
                             const text = inputMessage.split("|");
                             const msg = text[Math.floor(Math.random() * text.length)];
-                            const task = [ig.comment(media.pk, msg)];
-                            let [comment] = await Promise.all(task);
- 
-
+                            const task = [ig.like(media.pk), ig.comment(media.pk, msg)];
+                            let [like, comment] = await Promise.all(task);
                             
+                            like = like ? chalk.bold.green("Like") : chalk.bold.red("Like");
                             comment = comment ? chalk.bold.green("Comment") : chalk.bold.red("Comment");
-                            print(`▲ @${media.user.username} ⇶ [${comment}] ⇶ ${chalk.cyanBright(msg)}`);
-                        } else print(chalk`▼ @${media.user.username} ⇶ {yellow Private or already liked/followed/follows you}`);
+                            print(`▲ @${media.user.username} ⇶ [${like}, ${comment}] ⇶ ${chalk.cyanBright(msg)}`);
+                        } else print(chalk`▼ @${media.user.username} ⇶ {yellow Private or already liked you}`);
                     })
-                );
+                
                 if (i < items.length - 1) print(`Current Account: (${login.username}) » Delay: ${perExec}/${delayTime}ms \n`, "wait", true);
                 await delay(delayTime);
             }
         } while (tags.moreAvailable);
+        location.reload();
         print(`Status: All Task done!`, "ok", true);
     } catch (err) {
         print(err, "err");
