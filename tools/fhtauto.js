@@ -54,7 +54,7 @@ const { chalk, inquirer, _, fs, instagram, print, delay } = require("./index.js"
             message: "Input sleep time (in milliseconds):",
             validate: (val) => /[0-9]/.test(val) || "Only input numbers",
         },
-
+       
     ];
 
     try {
@@ -64,7 +64,7 @@ const { chalk, inquirer, _, fs, instagram, print, delay } = require("./index.js"
         const login = await ig.login();
         print(`Logged in as @${login.username} (User ID: ${login.pk})`, "ok");
         print("Collecting users in tagged media . . .", "wait");
-        
+        await Promise.allconst ,tags = await ig.tagFeed(hashtag);
         print(`Doing task with ratio ${perExec} target / ${delayTime} milliseconds \n`, "wait");
         do {
             let items = await tags.items();
