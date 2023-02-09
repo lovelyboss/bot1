@@ -58,21 +58,24 @@ const { chalk, inquirer, _, fs, instagram, print, delay } = require("./index.js"
     ];
 
     try {
-        const { username, password, hashtag, perExec, delayTime, refreshRate, inputMessage } = await inquirer.prompt(questions);
+        const { username, password, hashtag, perExec, delayTime, inputMessage } = await inquirer.prompt(questions);
         const ig = new instagram(username, password);
         print("Try to Login . . .", "wait", true);
         const login = await ig.login();
         print(`Logged in as @${login.username} (User ID: ${login.pk})`, "ok");
         print("Collecting users in tagged media . . .", "wait");
         
+        
         print(`Doing task with ratio ${perExec} target / ${delayTime} milliseconds \n`, "wait");
         do {
-            let items = await tags.items();
-            items = _.chunk(items, perExec);
-            for (let i = 0; i < items.length; i++) {
-                
+            
+            for (let i = 0; i < 500; i++) {
+                await Promise.allconst ,tags = await ig.tagFeed(hashtag);
+                let items = await tags.items();
+                items = _.chunk(items, perExec);
 
-                    await Promise.allconst ,tags = await ig.tagFeed(hashtag);
+
+                    
 
                     
 
