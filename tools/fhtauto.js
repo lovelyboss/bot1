@@ -3,14 +3,15 @@ const { chalk, inquirer, _, fs, instagram, print, delay } = require("./index.js"
 (async () => {
     print(
         chalk`{bold.green
-  ▄▄▄▄▄            ▄▄▌  .▄▄ · ▪   ▄▄ • 
-  •██  ▪     ▪     ██•  ▐█ ▀. ██ ▐█ ▀ ▪
-   ▐█.▪ ▄█▀▄  ▄█▀▄ ██▪  ▄▀▀▀█▄▐█·▄█ ▀█▄
-   ▐█▌·▐█▌.▐▌▐█▌.▐▌▐█▌▐▌▐█▄▪▐█▐█▌▐█▄▪▐█
-   ▀▀▀  ▀█▄▀▪ ▀█▄▀▪.▀▀▀  ▀▀▀▀ ▀▀▀·▀▀▀▀ 
-
-  Ξ TITLE  : Folow Like Comment (Hastag Target)
-  Ξ UPDATE : Wednesday, August 4, 2021 (GMT+8)
+          |
+    ______|______
+  /  ___________  \
+ |  |---|   |---|  |
+||        |        ||
+ |    \_______/    |
+  \_______________/
+  Ξ TITLE  : Like Comment (Hastag Target)
+  Ξ UPDATE : Monday,February  27, 2023
            : TESTED "OK" BUG? YouTellMe!
     }`
     );
