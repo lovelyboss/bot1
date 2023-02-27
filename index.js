@@ -74,15 +74,17 @@ const main = async () => {
 };
 
 console.log(chalk`{bold.green
-  ▄▄▄▄▄            ▄▄▌  .▄▄ · ▪   ▄▄ • 
-  •██  ▪     ▪     ██•  ▐█ ▀. ██ ▐█ ▀ ▪
-   ▐█.▪ ▄█▀▄  ▄█▀▄ ██▪  ▄▀▀▀█▄▐█·▄█ ▀█▄
-   ▐█▌·▐█▌.▐▌▐█▌.▐▌▐█▌▐▌▐█▄▪▐█▐█▌▐█▄▪▐█
-   ▀▀▀  ▀█▄▀▪ ▀█▄▀▪.▀▀▀  ▀▀▀▀ ▀▀▀·▀▀▀▀ 
+          |
+    ______|______
+  /  ___________  \
+ |  |---|   |---|  |
+||        |        ||
+ |    \_______/    |
+  \_______________/
+  Ξ TITLE  : bot v5.0
+  Ξ EMAIL  : lovelyboss9828@gmail.com
+  Ξ UPDATE : monday, jan 27, 2023
 
-  Ξ TITLE  : toolsig v4.0
-  Ξ EMAIL  : officialputuid@hack.id
-  Ξ UPDATE : Wednesday, August 4, 2021
 
   116 111 111 108 115 105 103  118 51 
   }`);
