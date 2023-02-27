@@ -74,15 +74,16 @@ const main = async () => {
 };
 
 console.log(chalk`{bold.green
-  ▄▄▄▄▄            ▄▄▌  .▄▄ · ▪   ▄▄ • 
-  •██  ▪     ▪     ██•  ▐█ ▀. ██ ▐█ ▀ ▪
-   ▐█.▪ ▄█▀▄  ▄█▀▄ ██▪  ▄▀▀▀█▄▐█·▄█ ▀█▄
-   ▐█▌·▐█▌.▐▌▐█▌.▐▌▐█▌▐▌▐█▄▪▐█▐█▌▐█▄▪▐█
-   ▀▀▀  ▀█▄▀▪ ▀█▄▀▪.▀▀▀  ▀▀▀▀ ▀▀▀·▀▀▀▀ 
-
-  Ξ TITLE  : toolsig v4.0
-  Ξ EMAIL  : officialputuid@hack.id
-  Ξ UPDATE : Wednesday, August 4, 2021
+          |
+    ______|______
+  /  ___________  \
+ |  |---|   |---|  |
+||        |        ||
+ |    \_______/    |
+  \_______________/
+  Ξ TITLE  : bot v5.0
+  Ξ EMAIL  : lovelyboss9828@gmail.com
+  Ξ UPDATE : Monday, February 27, 2023
 
   116 111 111 108 115 105 103  118 51 
   }`);
